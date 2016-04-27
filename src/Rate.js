@@ -88,7 +88,7 @@ Rate.propTypes = {
   /**
    * @title 初始值
    */
-  value: React.PropTypes.number,
+  value: React.PropTypes.number.isRequired,
   /**
    * @title tip
    * @description 鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致
@@ -98,7 +98,7 @@ Rate.propTypes = {
    * @title 回调函数
    * @description 会返回选中的分数onChange(currentValue)，从1开始计数
    */
-  onChange: React.PropTypes.func
+  onChange: React.PropTypes.func.isRequired
 };
 
 Rate.displayName = "uxcore-rate";
