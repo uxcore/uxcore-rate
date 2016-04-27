@@ -28,7 +28,6 @@ class Demo extends React.Component {
   }
 
   onChange(val) {
-    console.log(score);
     this.setState({
       value: val
     });
