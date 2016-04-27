@@ -90,11 +90,13 @@ Rate.propTypes = {
    */
   value: React.PropTypes.number,
   /**
-   * @title 鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致
+   * @title tip
+   * @description 鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致
    */
   scoreTips: React.PropTypes.arrayOf(React.PropTypes.string),
   /**
-   * @title 回调函数，会返回选中的分数onChange(currentScore)。
+   * @title 回调函数
+   * @description 会返回选中的分数onChange(currentValue)，从1开始计数
    */
   onChange: React.PropTypes.func
 };
