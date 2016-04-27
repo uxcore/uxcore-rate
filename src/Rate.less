@@ -6,10 +6,13 @@
  * All rights reserved.
  */
 
-.kuma-rate {
-  .rate-item{
+@__ratePrefixCls: kuma-rate;
+
+.@{__ratePrefixCls} {
+  .@{__ratePrefixCls}-item {
     display: inline-block;
     cursor: pointer;
+    color: @gray-lighter;
     &.active {
       color: @brand-primary;
     }

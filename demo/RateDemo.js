@@ -27,6 +27,7 @@ class Demo extends React.Component {
   }
 
   onChange(score) {
+    console.log(score);
     this.setState({
       score: score
     });
