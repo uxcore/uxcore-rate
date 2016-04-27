@@ -43,7 +43,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div className="rate-demo-wrp">
-        <span className="rate-label">这里是label:</span>
+        <span className="rate-label">请打分:</span>
         <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
       </div>
     );
@@ -65,7 +65,6 @@ module.exports = Demo;
 |disabled|bool||false|是否禁用|
 |total|number||5|总共有多少个icon,即总分为多少|
 |value|number||0|初始值|
-|fontSize|number||16|iconfont的尺寸|
 |scoreTips|arrayOf(string)||[]|鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致|
 
 

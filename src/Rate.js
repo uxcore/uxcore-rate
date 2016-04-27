@@ -41,9 +41,9 @@ class Rate extends React.Component {
                 {
                   t.props.scoreTips[k] ?
                     <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
-                      <i className="kuma-icon kuma-icon-favorite" style={{'fontSize': t.props.fontSize}}></i>
+                      <i className="kuma-icon kuma-icon-favorite"></i>
                     </Tooltip> :
-                    <i className="kuma-icon kuma-icon-favorite" style={{'fontSize': t.props.fontSize}}></i>
+                    <i className="kuma-icon kuma-icon-favorite"></i>
                 }
               </div>
             );
@@ -59,7 +59,6 @@ Rate.defaultProps = {
   disabled: false,
   total: 5,
   value: 0,
-  fontSize: 16,
   scoreTips: [],
   onChange: ()=> {
   }
@@ -90,10 +89,6 @@ Rate.propTypes = {
    * @title 初始值
    */
   value: React.PropTypes.number,
-  /**
-   * @title iconfont尺寸
-   */
-  fontSize: React.PropTypes.number,
   /**
    * @title 鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致
    */

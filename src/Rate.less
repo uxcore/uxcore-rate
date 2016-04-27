@@ -8,16 +8,24 @@
 
 @__ratePrefixCls: kuma-rate;
 @__rateItemGap: 10px;
+@__rateIconFontSize: 16px;
 
-.@{__ratePrefixCls} {
-  .@{__ratePrefixCls}-item {
+.@{__ratePrefixCls}-item {
+  display: inline-block;
+  cursor: pointer;
+  color: @gray-lighter;
+  padding-left: (@__rateItemGap / 2);
+  padding-right: (@__rateItemGap / 2);
+  .kuma-icon {
     display: inline-block;
-    cursor: pointer;
-    color: @gray-lighter;
-    padding-left: (@__rateItemGap / 2);
-    padding-right: (@__rateItemGap / 2);
-    &.active {
-      color: @brand-primary;
-    }
+    font-size: @__rateIconFontSize;
+  }
+  &.active {
+    color: @brand-primary;
+  }
+  &:hover .kuma-icon {
+    color: @brand-primary-light;
+    transform: scale(1.1);
+    transition: all @transition-duration @transition-ease @transition-delay;
   }
 }

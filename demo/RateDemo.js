@@ -37,7 +37,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div className="rate-demo-wrp">
-        <span className="rate-label">这里是label:</span>
+        <span className="rate-label">请打分:</span>
         <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
       </div>
     );
