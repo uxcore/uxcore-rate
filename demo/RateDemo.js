@@ -15,7 +15,8 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: 3
+      total: 5,
+      value: 3
     };
     this.scoreTips = [
       "不给力啊",
@@ -26,10 +27,10 @@ class Demo extends React.Component {
     ];
   }
 
-  onChange(score) {
+  onChange(val) {
     console.log(score);
     this.setState({
-      score: score
+      value: val
     });
   }
 
@@ -37,7 +38,7 @@ class Demo extends React.Component {
     return (
       <div className="rate-demo-wrp">
         <span className="rate-label">这里是label:</span>
-        <Rate className="rate-demo" score={this.state.score} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
+        <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
       </div>
     );
   }

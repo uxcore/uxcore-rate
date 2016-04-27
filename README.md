@@ -23,7 +23,8 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: 3
+      total: 5,
+      value: 3
     };
     this.scoreTips = [
       "不给力啊",
@@ -33,16 +34,17 @@ class Demo extends React.Component {
       "哇，超出期望啊"
     ];
   }
-  onChange(score) {
+  onChange(val) {
+    console.log(score);
     this.setState({
-      score: score
+      value: val
     });
   }
   render() {
     return (
       <div className="rate-demo-wrp">
-        <span className="rate-label">请打分:</span>
-        <Rate className="rate-demo" score={this.state.score} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
+        <span className="rate-label">这里是label:</span>
+        <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
       </div>
     );
   }
@@ -52,19 +54,18 @@ module.exports = Demo;
 
 ## API
 
-- onChange(): 回调函数，会返回选中的分数onChange(currentScore)
+- onChange(): 回调函数，会返回选中的分数onChange(currentValue)，从1开始计数
 
 ## Props
 
 | 配置项 | 类型 | 必填 | 默认值 | 功能/备注 |
 |---|---|---|---|---|
-|prefixCls |string||kuma-rate|前缀|
+|prefixCls |string||kuma-rate|类名前缀|
 |className |string|||自定义样式的class名称|
 |disabled|bool||false|是否禁用|
-|totalScore|number||5|总共有多少个icon,即总分为多少|
-|score|number||0|初始值|
+|total|number||5|总共有多少个icon,即总分为多少|
+|value|number||0|初始值|
 |fontSize|number||16|iconfont的尺寸|
-|gap|number||10|每一项的padding-let 和 padding-right的总和|
 |scoreTips|arrayOf(string)||[]|鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致|
 
 
