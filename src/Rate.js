@@ -41,9 +41,9 @@ class Rate extends React.Component {
                 {
                   t.props.scoreTips[k] ?
                     <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
-                      <i className="kuma-icon kuma-icon-favorite"></i>
+                      <i className="kuma-icon kuma-icon-wujiaoxing"></i>
                     </Tooltip> :
-                    <i className="kuma-icon kuma-icon-favorite"></i>
+                    <i className="kuma-icon kuma-icon-wujiaoxing"></i>
                 }
               </div>
             );
