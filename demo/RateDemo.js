@@ -28,6 +28,7 @@ class Demo extends React.Component {
   }
 
   onChange(val) {
+    console.log(val);
     this.setState({
       value: val
     });
