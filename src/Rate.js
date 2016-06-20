@@ -13,12 +13,46 @@ class Rate extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      hover: props.value
+    };
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.value !== this.props.value){
+      this.setState({
+        hover: nextProps.value
+      });
+    }
+  }
+
+  handleItemHover(i){
+    if (this.props.disabled){
+      console.log('return');
+      return;
+    }
+
+    this.setState({
+      hover: i
+    });
+  }
+
+  handleItemLeave(){
+    if (this.props.disabled){
+      return;
+    }
+
+    this.setState({
+      hover: this.props.value
+    });
   }
 
   handleItemClick(v, disabled) {
-    if (disabled) {
+    if (this.props.disabled){
       return;
     }
+
     this.props.onChange(v);
   }
 
@@ -30,14 +64,14 @@ class Rate extends React.Component {
     });
 
     return (
-      <div className={classes}>
+      <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
         {
           // 根据totalScore,造一个数组，仅用于执行map方法
           new Array(t.props.total).fill(1).map((v, k) => {
             return (
               <div className={classnames(`${t.props.prefixCls}-item`, {
-                  'active': (k + 1) <= t.props.value
-                })} key={k + 1} onClick={t.handleItemClick.bind(t, k + 1, t.props.disabled)}>
+                  'active': (k + 1) <= t.state.hover
+                })} key={k + 1} onClick={t.handleItemClick.bind(t, k + 1)} onMouseEnter={t.handleItemHover.bind(t, k+1)}>
                 {
                   t.props.scoreTips[k] ?
                     <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
