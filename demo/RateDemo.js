@@ -36,9 +36,17 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div className="rate-demo-wrp">
-        <span className="rate-label">请打分:</span>
-        <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
+      <div>
+        <div className="rate-demo-wrp demo-tip-hover-show">
+          <span className="rate-label">请打分:</span>
+          <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips}
+                tipShow="hover" onChange={this.onChange.bind(this)}/>
+        </div>
+        <div className="rate-demo-wrp demo-tip-always-show">
+          <span className="rate-label">请打分:</span>
+          <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips}
+                tipShow="always" onChange={this.onChange.bind(this)}/>
+        </div>
       </div>
     );
   }

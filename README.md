@@ -64,5 +64,6 @@ module.exports = Demo;
 |className |string|option||自定义样式的class名称|
 |disabled|bool|option|false|是否禁用|
 |total|number|option|5|总共有多少个icon,即总分为多少|
-|scoreTips|arrayOf(string)|option|[]|鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致|
+|scoreTips|arrayOf(string)|option|[]|每个star的描述文字，不传就不会显示tip。数组元素个数必须和totalScore一致|
+|tipShow|string|option|hover|描述文字的显示方式.可选值:hover/always|
 
