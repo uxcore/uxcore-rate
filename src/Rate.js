@@ -19,17 +19,16 @@ class Rate extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps){
-    if (nextProps.value !== this.props.value){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
       this.setState({
         hover: nextProps.value
       });
     }
   }
 
-  handleItemHover(i){
-    if (this.props.disabled){
-      console.log('return');
+  handleItemHover(i) {
+    if (this.props.disabled) {
       return;
     }
 
@@ -38,8 +37,8 @@ class Rate extends React.Component {
     });
   }
 
-  handleItemLeave(){
-    if (this.props.disabled){
+  handleItemLeave() {
+    if (this.props.disabled) {
       return;
     }
 
@@ -49,11 +48,23 @@ class Rate extends React.Component {
   }
 
   handleItemClick(v, disabled) {
-    if (this.props.disabled){
+    if (this.props.disabled) {
       return;
     }
 
     this.props.onChange(v);
+  }
+
+  // when tipShow === 'always', render the tip
+  renderAlwaysTip() {
+    let t = this;
+    return (
+      <div className={`${t.props.prefixCls}-always-tip-container`}>
+        {
+          t.state.hover === 0 ? '点击星星进行评分' : t.props.scoreTips[parseInt(t.state.hover) - 1]
+        }
+      </div>
+    );
   }
 
   render() {
@@ -71,9 +82,10 @@ class Rate extends React.Component {
             return (
               <div className={classnames(`${t.props.prefixCls}-item`, {
                   'active': (k + 1) <= t.state.hover
-                })} key={k + 1} onClick={t.handleItemClick.bind(t, k + 1)} onMouseEnter={t.handleItemHover.bind(t, k+1)}>
+                })} key={k + 1} onClick={t.handleItemClick.bind(t, k + 1)}
+                   onMouseEnter={t.handleItemHover.bind(t, k+1)}>
                 {
-                  t.props.scoreTips[k] ?
+                  t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
                     <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
                       <i className="kuma-icon kuma-icon-wujiaoxing"></i>
                     </Tooltip> :
@@ -82,6 +94,9 @@ class Rate extends React.Component {
               </div>
             );
           })
+        }
+        {
+          t.props.tipShow === 'always' ? t.renderAlwaysTip() : ''
         }
       </div>
     );
@@ -94,8 +109,8 @@ Rate.defaultProps = {
   total: 5,
   value: 0,
   scoreTips: [],
-  onChange: ()=> {
-  }
+  tipShow: 'hover',
+  onChange: ()=> {}
 };
 
 
@@ -107,7 +122,7 @@ Rate.propTypes = {
   prefixCls: React.PropTypes.string,
   /**
    * @title class
-   * @description 自定义样式的class名称
+   * @description 自定义样式的class
    */
   className: React.PropTypes.string,
   /**
@@ -125,9 +140,14 @@ Rate.propTypes = {
   value: React.PropTypes.number.isRequired,
   /**
    * @title tip
-   * @description 鼠标悬停在star上面显示的tip，不传入就不会显示tip。数组元素个数必须和totalScore一致
+   * @description 每个star的描述文字，不传就不会显示tip。数组元素个数必须和totalScore一致
    */
   scoreTips: React.PropTypes.arrayOf(React.PropTypes.string),
+  /**
+   * @title tip的显示方式
+   * @description 可选值:hover/always.hover:当hover的时候显示,always:总是显示在底部
+   */
+  tipShow: React.PropTypes.string,
   /**
    * @title 回调函数
    * @description 会返回选中的分数onChange(currentValue)，从1开始计数
