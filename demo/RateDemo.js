@@ -27,6 +27,10 @@ class Demo extends React.Component {
     ];
   }
 
+  value = {a: 1};
+
+  onClick = () => {};
+
   onChange(val) {
     console.log(val);
     this.setState({
@@ -35,6 +39,7 @@ class Demo extends React.Component {
   }
 
   render() {
+    console.log(this.value)
     return (
       <div>
         <div className="rate-demo-wrp demo-tip-hover-show">
