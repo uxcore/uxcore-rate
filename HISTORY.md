@@ -1,9 +1,20 @@
 # History
 ----
 
+## 0.2.0
+
+* `CHANGED` update `uxcore-tooltip` to ~0.4.0
+* `FIXED` server render support
+* `CHANGED` new scaffold
+* `CHANGED` eslint
+
+## 0.1.5
+
+* `FIXED` always style bug [#8](https://github.com/uxcore/uxcore-rate/issues/8)
+
 ## 0.1.4
-* add prop tipShow
-* add .editorconfig
+* `NEW` add prop tipShow
+* `NEW` add .editorconfig
 
 ## 0.1.3
 * `CHANGED` new scaffold

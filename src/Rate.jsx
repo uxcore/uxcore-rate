@@ -8,6 +8,7 @@
 
 import classnames from 'classnames';
 import Tooltip from 'uxcore-tooltip';
+import React from 'react';
 
 class Rate extends React.Component {
 
@@ -15,14 +16,14 @@ class Rate extends React.Component {
     super(props);
 
     this.state = {
-      hover: props.value
+      hover: props.value,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
       this.setState({
-        hover: nextProps.value
+        hover: nextProps.value,
       });
     }
   }
@@ -33,7 +34,7 @@ class Rate extends React.Component {
     }
 
     this.setState({
-      hover: i
+      hover: i,
     });
   }
 
@@ -43,11 +44,11 @@ class Rate extends React.Component {
     }
 
     this.setState({
-      hover: this.props.value
+      hover: this.props.value,
     });
   }
 
-  handleItemClick(v, disabled) {
+  handleItemClick(v) {
     if (this.props.disabled) {
       return;
     }
@@ -57,43 +58,45 @@ class Rate extends React.Component {
 
   // when tipShow === 'always', render the tip
   renderAlwaysTip() {
-    let t = this;
+    const t = this;
     return (
       <div className={`${t.props.prefixCls}-always-tip-container`}>
         {
-          t.state.hover === 0 ? '点击星星进行评分' : t.props.scoreTips[parseInt(t.state.hover) - 1]
+          t.state.hover === 0 ? '点击星星进行评分' : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
         }
       </div>
     );
   }
 
   render() {
-    let t = this;
-    let classes = classnames(t.props.prefixCls, {
+    const t = this;
+    const classes = classnames(t.props.prefixCls, {
       [t.props.className]: !!t.props.className,
-      ['disabled']: !!t.props.disabled
+      disabled: !!t.props.disabled,
     });
 
     return (
       <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
         {
           // 根据totalScore,造一个数组，仅用于执行map方法
-          new Array(t.props.total).fill(1).map((v, k) => {
-            return (
-              <div className={classnames(`${t.props.prefixCls}-item`, {
-                  'active': (k + 1) <= t.state.hover
-                })} key={k + 1} onClick={t.handleItemClick.bind(t, k + 1)}
-                   onMouseEnter={t.handleItemHover.bind(t, k+1)}>
-                {
-                  t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
-                    <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
-                      <i className="kuma-icon kuma-icon-wujiaoxing"></i>
-                    </Tooltip> :
-                    <i className="kuma-icon kuma-icon-wujiaoxing"></i>
-                }
-              </div>
-            );
-          })
+          new Array(t.props.total).fill(1).map((v, k) => (
+            <div
+              className={classnames(`${t.props.prefixCls}-item`, {
+                active: (k + 1) <= t.state.hover,
+              })}
+              key={k + 1}
+              onClick={t.handleItemClick.bind(t, k + 1)}
+              onMouseEnter={t.handleItemHover.bind(t, k + 1)}
+            >
+              {
+                t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
+                  <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
+                    <i className="kuma-icon kuma-icon-wujiaoxing" />
+                  </Tooltip> :
+                    <i className="kuma-icon kuma-icon-wujiaoxing" />
+              }
+            </div>
+            ))
         }
         {
           t.props.tipShow === 'always' ? t.renderAlwaysTip() : ''
@@ -110,7 +113,7 @@ Rate.defaultProps = {
   value: 0,
   scoreTips: [],
   tipShow: 'hover',
-  onChange: ()=> {}
+  onChange: () => {},
 };
 
 
@@ -152,9 +155,9 @@ Rate.propTypes = {
    * @title 回调函数
    * @description 会返回选中的分数onChange(currentValue)，从1开始计数
    */
-  onChange: React.PropTypes.func.isRequired
+  onChange: React.PropTypes.func.isRequired,
 };
 
-Rate.displayName = "uxcore-rate";
+Rate.displayName = 'uxcore-rate';
 
 module.exports = Rate;
