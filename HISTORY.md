@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.2.1
+
+* `FIXED` IE compatible bug
+
 ## 0.2.0
 
 * `CHANGED` update `uxcore-tooltip` to ~0.4.0
