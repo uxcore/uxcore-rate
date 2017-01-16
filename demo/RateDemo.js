@@ -8,7 +8,7 @@
 
 let classnames = require('classnames');
 
-let Rate = require('../src');
+let Rate = require('../src/Rate.jsx');
 
 class Demo extends React.Component {
 
@@ -39,7 +39,6 @@ class Demo extends React.Component {
   }
 
   render() {
-    console.log(this.value)
     return (
       <div>
         <div className="rate-demo-wrp demo-tip-hover-show">

@@ -68,6 +68,15 @@ class Rate extends React.Component {
     );
   }
 
+  // 根据指定长度,造一个元素均为1数组，仅用于执行map方法
+  makeNewArray(len) {
+    const arr = new Array();
+    for(let i = 0; i < len; i ++) {
+      arr.push(1);
+    }
+    return arr;
+  }
+
   render() {
     const t = this;
     const classes = classnames(t.props.prefixCls, {
@@ -78,8 +87,7 @@ class Rate extends React.Component {
     return (
       <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
         {
-          // 根据totalScore,造一个数组，仅用于执行map方法
-          new Array(t.props.total).fill(1).map((v, k) => (
+          t.makeNewArray(t.props.total).map((v, k) => (
             <div
               className={classnames(`${t.props.prefixCls}-item`, {
                 active: (k + 1) <= t.state.hover,
