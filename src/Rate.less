@@ -8,8 +8,7 @@
 
 @__ratePrefixCls: kuma-rate;
 @__rateItemGap: 10px;
-@__rateIconFontSize: 16px;
-
+@__rateIconFontSize: 18px;
 .@{__ratePrefixCls}-item {
   display: inline-block;
   cursor: pointer;
@@ -26,7 +25,19 @@
 }
 
 .@{__ratePrefixCls}-always-tip-container {
-  width: 130px;
+  width: 140px;
   color: @gray-light;
   text-align: center;
+}
+
+.@{__ratePrefixCls}-large {
+  .@{__ratePrefixCls}-item {
+    .kuma-icon {
+      font-size: 26px;
+    }
+  }
+  .@{__ratePrefixCls}-always-tip-container {
+    margin-top: 10px;
+    width: 180px;
+  }
 }

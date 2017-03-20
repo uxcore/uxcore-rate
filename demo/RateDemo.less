@@ -8,16 +8,22 @@
 
 @import "../node_modules/kuma-base/theme/blue.less";
 @import "../src/Rate.less";
-
 .rate-demo-wrp {
   margin-top: 50px;
   overflow: hidden;
-  .rate-label, .rate-demo {
+  .rate-label,
+  .rate-demo {
     float: left;
   }
-  .rate-label{
-    line-height: 24px;
+  .rate-label {
+    line-height: 27px;
     font-size: 14px;
     margin-right: 10px;
+  }
+}
+
+.demo-type-large {
+  .rate-label {
+    line-height: 39px;
   }
 }

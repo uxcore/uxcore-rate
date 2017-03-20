@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.2.2
+
+* `CHANGED` style change
+
 ## 0.2.1
 
 * `FIXED` IE compatible bug
