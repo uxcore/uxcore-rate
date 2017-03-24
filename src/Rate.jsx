@@ -8,6 +8,7 @@
 
 import classnames from 'classnames';
 import Tooltip from 'uxcore-tooltip';
+import Icon from 'uxcore-icon';
 import React from 'react';
 
 const makeNewArray = (len) => {
@@ -87,24 +88,28 @@ class Rate extends React.Component {
     return (
       <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
         {
-          makeNewArray(t.props.total).map((v, k) => (
-            <div
-              className={classnames(`${t.props.prefixCls}-item`, {
-                active: (k + 1) <= t.state.hover,
-              })}
-              key={k + 1}
-              onClick={t.handleItemClick.bind(t, k + 1)}
-              onMouseEnter={t.handleItemHover.bind(t, k + 1)}
-            >
-              {
+          makeNewArray(t.props.total).map((v, k) => {
+            const isActive = (k + 1) <= t.state.hover;
+            const icon = <Icon name={`${isActive ? 'caozuo-xingji-full' : 'caozuo-xingji-line'}`} />;
+            return (
+              <div
+                className={classnames(`${t.props.prefixCls}-item`, {
+                  active: (k + 1) <= t.state.hover,
+                })}
+                key={k + 1}
+                onClick={() => { t.handleItemClick(k + 1); }}
+                onMouseEnter={() => { t.handleItemHover(k + 1); }}
+              >
+                {
                 t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
                   <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
-                    <i className="kuma-icon kuma-icon-wujiaoxing" />
+                    {icon}
                   </Tooltip> :
-                    <i className="kuma-icon kuma-icon-wujiaoxing" />
+                    icon
               }
-            </div>
-            ))
+              </div>
+            );
+          })
         }
         {
           t.props.tipShow === 'always' ? t.renderAlwaysTip() : ''

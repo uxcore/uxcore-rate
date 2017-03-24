@@ -1,6 +1,6 @@
 {
  "name": "uxcore-rate",
- "version": "0.2.2",
+ "version": "0.3.0",
  "description": "rate component for uxcore.",
  "repository": "https://github.com/uxcore/uxcore-rate.git",
  "author": "quanyun.mqy",
@@ -41,12 +41,13 @@
   "react": "0.14.x",
   "react-addons-test-utils": "0.14.x",
   "react-dom": "0.14.x",
-  "uxcore-kuma": "2.x",
+  "uxcore-kuma": "*",
   "uxcore-tools": "0.2.x"
  },
  "dependencies": {
   "classnames": "^2.1.2",
   "object-assign": "^4.0.0",
+  "uxcore-icon": "^0.1.5",
   "uxcore-tooltip": "~0.4.0"
  },
  "contributors": [],

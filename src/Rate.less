@@ -9,18 +9,16 @@
 @__ratePrefixCls: kuma-rate;
 @__rateItemGap: 10px;
 @__rateIconFontSize: 18px;
+@__rateIconFontLargeSize: 24px;
 .@{__ratePrefixCls}-item {
   display: inline-block;
   cursor: pointer;
   color: @basic-600;
   padding-left: (@__rateItemGap / 2);
   padding-right: (@__rateItemGap / 2);
-  .kuma-icon {
-    display: inline-block;
+  .uxcore-icon {
+    display: block;
     font-size: @__rateIconFontSize;
-  }
-  &.active {
-    color: @brand-primary;
   }
 }
 
@@ -32,12 +30,12 @@
 
 .@{__ratePrefixCls}-large {
   .@{__ratePrefixCls}-item {
-    .kuma-icon {
-      font-size: 26px;
+    .uxcore-icon {
+      font-size: @__rateIconFontLargeSize;
     }
   }
   .@{__ratePrefixCls}-always-tip-container {
-    margin-top: 10px;
+    margin-top: 4px;
     width: 180px;
   }
 }

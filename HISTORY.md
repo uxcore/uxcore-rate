@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.3.0
+
+* `CHANGED` new icon
+
 ## 0.2.2
 
 * `CHANGED` style change
