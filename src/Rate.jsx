@@ -90,7 +90,14 @@ class Rate extends React.Component {
         {
           makeNewArray(t.props.total).map((v, k) => {
             const isActive = (k + 1) <= t.state.hover;
-            const icon = <Icon name={`${isActive ? 'caozuo-xingji-full' : 'caozuo-xingji-line'}`} />;
+            const icon = (
+              <Icon
+                name={`${isActive ? 'caozuo-xingji-full' : 'caozuo-xingji-line'}`}
+                className={classnames({
+                  [`${t.props.prefixCls}-icon-active`]: isActive,
+                })}
+              />
+            );
             return (
               <div
                 className={classnames(`${t.props.prefixCls}-item`, {

@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.3.1
+
+* `FIXED` wrong active color 
+
 ## 0.3.0
 
 * `CHANGED` new icon
