@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.3.2
+
+* `CHANGED` rename prop `type` to `size`
+
 ## 0.3.1
 
 * `FIXED` wrong active color 

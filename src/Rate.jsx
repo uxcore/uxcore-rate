@@ -82,7 +82,7 @@ class Rate extends React.Component {
     const classes = classnames(t.props.prefixCls, {
       [t.props.className]: !!t.props.className,
       disabled: !!t.props.disabled,
-      [`${t.props.prefixCls}-${t.props.type}`]: true,
+      [`${t.props.prefixCls}-${t.props.size}`]: true,
     });
 
     return (
@@ -134,13 +134,13 @@ Rate.defaultProps = {
   scoreTips: [],
   tipShow: 'hover',
   onChange: () => {},
-  type: 'normal',
+  size: 'normal',
 };
 
 
 // http://facebook.github.io/react/docs/reusable-components.html
 Rate.propTypes = {
-  type: React.PropTypes.string,
+  size: React.PropTypes.string,
   prefixCls: React.PropTypes.string,
   className: React.PropTypes.string,
   disabled: React.PropTypes.bool,

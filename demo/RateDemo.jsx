@@ -63,7 +63,7 @@ class Demo extends React.Component {
           <span className="rate-label">请打分:</span>
           <Rate
             className="rate-demo"
-            type="large"
+            size="large"
             total={this.state.total}
             value={this.state.value}
             scoreTips={this.scoreTips}
