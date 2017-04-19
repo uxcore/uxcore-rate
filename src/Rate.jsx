@@ -29,11 +29,33 @@ class Rate extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.total !== 5) {
+      setTimeout(() => {
+        // iconfont 会在 didMount 之后才加载进来，因此这里做了一个延时
+        this.resizeAlwaysTip();
+      }, 100);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
       this.setState({
         hover: nextProps.value,
       });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.total !== this.props.total) {
+      this.resizeAlwaysTip();
+    }
+  }
+
+  resizeAlwaysTip() {
+    if (this.alwaysTip) {
+      const tipWidth = this.star0.offsetWidth * parseInt(this.props.total, 10);
+      this.alwaysTip.style.width = `${tipWidth}px`;
     }
   }
 
@@ -69,7 +91,7 @@ class Rate extends React.Component {
   renderAlwaysTip() {
     const t = this;
     return (
-      <div className={`${t.props.prefixCls}-always-tip-container`}>
+      <div className={`${t.props.prefixCls}-always-tip-container`} ref={(c) => { this.alwaysTip = c; }}>
         {
           t.state.hover === 0 ? '点击星星进行评分' : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
         }
@@ -89,8 +111,10 @@ class Rate extends React.Component {
       <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
         {
           makeNewArray(t.props.total).map((v, k) => {
-            const isActive = (k + 1) <= t.state.hover;
-            const icon = (
+            const isActive = t.props.activeAll
+              ? ((k + 1) <= t.state.hover)
+              : (k + 1) === t.state.hover;
+            let icon = (
               <Icon
                 name={`${isActive ? 'caozuo-xingji-full' : 'caozuo-xingji-line'}`}
                 className={classnames({
@@ -98,12 +122,22 @@ class Rate extends React.Component {
                 })}
               />
             );
+            if (t.props.icons[k]) {
+              icon = React.cloneElement(
+                (isActive && t.props.activeIcons[k]) ? t.props.activeIcons[k] : t.props.icons[k],
+                {
+                  className: classnames({
+                    [`${t.props.prefixCls}-icon-active`]: isActive,
+                  }),
+                });
+            }
             return (
               <div
                 className={classnames(`${t.props.prefixCls}-item`, {
                   active: (k + 1) <= t.state.hover,
                 })}
                 key={k + 1}
+                ref={(c) => { this[`star${k}`] = c; }}
                 onClick={() => { t.handleItemClick(k + 1); }}
                 onMouseEnter={() => { t.handleItemHover(k + 1); }}
               >
@@ -135,6 +169,9 @@ Rate.defaultProps = {
   tipShow: 'hover',
   onChange: () => {},
   size: 'normal',
+  icons: [],
+  activeIcons: [],
+  activeAll: true,
 };
 
 
@@ -149,6 +186,8 @@ Rate.propTypes = {
   scoreTips: React.PropTypes.arrayOf(React.PropTypes.string),
   tipShow: React.PropTypes.string,
   onChange: React.PropTypes.func.isRequired,
+  icons: React.PropTypes.array,
+  activeAll: React.PropTypes.bool,
 };
 
 Rate.displayName = 'uxcore-rate';

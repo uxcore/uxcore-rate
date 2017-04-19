@@ -1,6 +1,11 @@
 # History
 ----
 
+## 0.3.3
+
+* `FIXED` wrong alwaysTip container width when total is not 5.
+* `NEW` add new props `icons`, `actveIcons` & `activeAll`
+
 ## 0.3.2
 
 * `CHANGED` rename prop `type` to `size`

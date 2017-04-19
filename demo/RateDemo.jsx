@@ -6,6 +6,7 @@
  * All rights reserved.
  */
 const React = require('react');
+const Icon = require('uxcore-icon');
 const Rate = require('../src/');
 
 class Demo extends React.Component {
@@ -14,7 +15,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       total: 5,
-      value: 3,
+      value: 1,
     };
     this.scoreTips = [
       '不给力啊',
@@ -44,6 +45,15 @@ class Demo extends React.Component {
             value={this.state.value}
             scoreTips={this.scoreTips}
             onChange={this.onChange.bind(this)}
+            activeAll={false}
+            icons={[
+              <Icon name="xiaolian-line" />,
+              <Icon name="kulian-line" />,
+            ]}
+            activeIcons={[
+              <Icon name="xiaolian-full" />,
+              <Icon name="kulian-full" />,
+            ]}
           />
         </div>
         <div className="rate-demo-wrp demo-tip-always-show">
