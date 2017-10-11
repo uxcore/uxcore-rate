@@ -70,4 +70,5 @@ module.exports = Demo;
 |icons|array|optional|[]|替换默认的图标| 0.3.3 |
 |activeIcons|array|optional|[]|替换激活状态的图标| 0.3.3 |
 |activeAll|bool|optional|true|是否激活所有低于 value 值的图标 | 0.3.3 |
+|placeholder|string|optional|'点击星星进行评分'|未选择时的默认提示文字 | 0.3.4 |
 

@@ -93,7 +93,7 @@ class Rate extends React.Component {
     return (
       <div className={`${t.props.prefixCls}-always-tip-container`} ref={(c) => { this.alwaysTip = c; }}>
         {
-          t.state.hover === 0 ? '点击星星进行评分' : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
+          t.state.hover === 0 ? this.props.placeholder : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
         }
       </div>
     );
@@ -172,6 +172,7 @@ Rate.defaultProps = {
   icons: [],
   activeIcons: [],
   activeAll: true,
+  placeholder: '点击星星进行评分',
 };
 
 
@@ -188,6 +189,7 @@ Rate.propTypes = {
   onChange: React.PropTypes.func.isRequired,
   icons: React.PropTypes.array,
   activeAll: React.PropTypes.bool,
+  placeholder: React.PropTypes.string,
 };
 
 Rate.displayName = 'uxcore-rate';
