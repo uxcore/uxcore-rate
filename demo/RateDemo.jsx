@@ -15,7 +15,7 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       total: 5,
-      value: 1,
+      value: 0,
     };
     this.scoreTips = [
       '不给力啊',
@@ -61,6 +61,7 @@ class Demo extends React.Component {
           <span className="rate-label">请打分:</span>
           <Rate
             className="rate-demo"
+            placeholder="您对这个产品是否满意"
             total={this.state.total}
             value={this.state.value}
             scoreTips={this.scoreTips}

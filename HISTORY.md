@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.3.4
+
+* `NEW` add new prop `placeholder`
+
 ## 0.3.3
 
 * `FIXED` wrong alwaysTip container width when total is not 5.
