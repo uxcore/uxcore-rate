@@ -93,7 +93,7 @@ class Rate extends React.Component {
     return (
       <div className={`${t.props.prefixCls}-always-tip-container`} ref={(c) => { this.alwaysTip = c; }}>
         {
-          t.state.hover === 0 ? this.props.placeholder : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
+          t.state.hover === 0 ? t.props.placeholder : t.props.scoreTips[parseInt(t.state.hover, 10) - 1]
         }
       </div>
     );
