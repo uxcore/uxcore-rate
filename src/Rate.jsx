@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import Tooltip from 'uxcore-tooltip';
 import Icon from 'uxcore-icon';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const makeNewArray = (len) => {
   const arr = [];
@@ -20,13 +21,13 @@ const makeNewArray = (len) => {
 };
 
 class Rate extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       hover: props.value,
     };
+    this.handleItemLeave = this.handleItemLeave.bind(this);
   }
 
   componentDidMount() {
@@ -110,7 +111,7 @@ class Rate extends React.Component {
     });
 
     return (
-      <div className={classes} onMouseLeave={this.handleItemLeave.bind(this)}>
+      <div className={classes} onMouseLeave={this.handleItemLeave}>
         {
           makeNewArray(t.props.total).map((v, k) => {
             const isActive = t.props.activeAll
@@ -144,12 +145,12 @@ class Rate extends React.Component {
                 onMouseEnter={() => { t.handleItemHover(k + 1); }}
               >
                 {
-                t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
-                  <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
-                    {icon}
-                  </Tooltip> :
+                  t.props.tipShow === 'hover' && t.props.scoreTips[k] ?
+                    <Tooltip placement="top" trigger="hover" overlay={t.props.scoreTips[k]}>
+                      {icon}
+                    </Tooltip> :
                     icon
-              }
+                }
               </div>
             );
           })
@@ -180,18 +181,18 @@ Rate.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 Rate.propTypes = {
-  size: React.PropTypes.string,
-  prefixCls: React.PropTypes.string,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  total: React.PropTypes.number,
-  value: React.PropTypes.number.isRequired,
-  scoreTips: React.PropTypes.arrayOf(React.PropTypes.string),
-  tipShow: React.PropTypes.string,
-  onChange: React.PropTypes.func.isRequired,
-  icons: React.PropTypes.array,
-  activeAll: React.PropTypes.bool,
-  placeholder: React.PropTypes.string,
+  size: PropTypes.string,
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  total: PropTypes.number,
+  value: PropTypes.number.isRequired,
+  scoreTips: PropTypes.arrayOf(PropTypes.string),
+  tipShow: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  icons: PropTypes.array,
+  activeAll: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 Rate.displayName = 'uxcore-rate';

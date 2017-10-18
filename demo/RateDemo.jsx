@@ -5,9 +5,10 @@
  * Copyright 2014-2015, Uxcore Team, Alinw.
  * All rights reserved.
  */
-const React = require('react');
-const Icon = require('uxcore-icon');
-const Rate = require('../src/');
+import React from 'react';
+
+import Icon from 'uxcore-icon';
+import Rate from '../src/';
 
 class Demo extends React.Component {
 
@@ -24,6 +25,7 @@ class Demo extends React.Component {
       '嗯，很给力',
       '哇，超出期望啊',
     ];
+    this.onChange = this.onChange.bind(this);
   }
 
   onChange(val) {
@@ -44,7 +46,7 @@ class Demo extends React.Component {
             total={this.state.total}
             value={this.state.value}
             scoreTips={this.scoreTips}
-            onChange={this.onChange.bind(this)}
+            onChange={this.onChange}
             activeAll={false}
             icons={[
               <Icon name="xiaolian-line" />,
@@ -66,7 +68,7 @@ class Demo extends React.Component {
             value={this.state.value}
             scoreTips={this.scoreTips}
             tipShow="always"
-            onChange={this.onChange.bind(this)}
+            onChange={this.onChange}
           />
         </div>
         <div className="rate-demo-wrp demo-type-large">
@@ -79,7 +81,7 @@ class Demo extends React.Component {
             value={this.state.value}
             scoreTips={this.scoreTips}
             tipShow="always"
-            onChange={this.onChange.bind(this)}
+            onChange={this.onChange}
           />
         </div>
       </div>
@@ -87,4 +89,4 @@ class Demo extends React.Component {
   }
 }
 
-module.exports = Demo;
+export default Demo;
