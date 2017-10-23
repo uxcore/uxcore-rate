@@ -6,58 +6,12 @@
 
 uxcore-rate ui component for react
 
-#### setup develop environment
-
-```sh
-$ git clone https://github.com/uxcore/uxcore-rate
-$ cd uxcore-rate
-$ npm install
-$ gulp server
-```
-
-## Usage
-
-```
-import Rate from 'uxcore-rage';
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      total: 5,
-      value: 3
-    };
-    this.scoreTips = [
-      "不给力啊",
-      "还成吧",
-      "哎呦，不错哦",
-      "嗯，很给力",
-      "哇，超出期望啊"
-    ];
-  }
-  onChange(val) {
-    console.log(score);
-    this.setState({
-      value: val
-    });
-  }
-  render() {
-    return (
-      <div className="rate-demo-wrp">
-        <span className="rate-label">请打分:</span>
-        <Rate className="rate-demo" total={this.state.total} value={this.state.value} scoreTips={this.scoreTips} onChange={this.onChange.bind(this)}/>
-      </div>
-    );
-  }
-}
-module.exports = Demo;
-```
-
 ## API
 
 ## Props
 
 | 配置项 | 类型 | 必填 | 默认值 | 功能/备注 | 版本 |
-|---|---|---|---|---|
+|---|---|---|---|---|--|
 |value|number|required|0|初始值|
 |onChange|function(currentValue)|required | |回调函数，会返回选中的分数，从1开始计数|
 |prefixCls|string|option|kuma-rate|类名前缀|
