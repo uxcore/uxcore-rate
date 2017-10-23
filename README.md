@@ -1,4 +1,3 @@
----
 
 ## uxcore-rate [![Dependency Status](http://img.shields.io/david/uxcore/uxcore-rate.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-rate) [![devDependency Status](http://img.shields.io/david/dev/uxcore/uxcore-rate.svg?style=flat-square)](https://david-dm.org/uxcore/uxcore-rate#info=devDependencies) 
 
