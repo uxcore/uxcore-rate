@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.3.5
+
+* `CHANGED` fit React@15
+
 ## 0.3.4
 
 * `NEW` add new prop `placeholder`
