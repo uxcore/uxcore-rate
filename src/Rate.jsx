@@ -188,7 +188,7 @@ Rate.propTypes = {
   total: PropTypes.number,
   value: PropTypes.number.isRequired,
   scoreTips: PropTypes.arrayOf(PropTypes.string),
-  tipShow: PropTypes.string,
+  tipShow: PropTypes.oneOf(['hover', 'always', 'false']),
   onChange: PropTypes.func.isRequired,
   icons: PropTypes.array,
   activeAll: PropTypes.bool,

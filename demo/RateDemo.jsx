@@ -84,6 +84,19 @@ class Demo extends React.Component {
             onChange={this.onChange}
           />
         </div>
+        <div className="rate-demo-wrp demo-type-large">
+          <h2>大尺寸, tipShow = 'false'</h2>
+          <span className="rate-label">请打分:</span>
+          <Rate
+            className="rate-demo"
+            size="large"
+            total={this.state.total}
+            value={this.state.value}
+            scoreTips={this.scoreTips}
+            tipShow={'false'}
+            onChange={this.onChange}
+          />
+        </div>
       </div>
     );
   }
