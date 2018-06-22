@@ -11,6 +11,7 @@ import Tooltip from 'uxcore-tooltip';
 import Icon from 'uxcore-icon';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { polyfill } from 'react-lifecycles-compat';
 
 const makeNewArray = (len) => {
   const arr = [];
@@ -39,18 +40,19 @@ class Rate extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
-      this.setState({
-        hover: nextProps.value,
-      });
-    }
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.total !== this.props.total) {
       this.resizeAlwaysTip();
     }
+  }
+
+  getDerivedStateFromProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
+      return {
+        hover: nextProps.value,
+      };
+    }
+    return null;
   }
 
   resizeAlwaysTip() {
@@ -92,7 +94,10 @@ class Rate extends React.Component {
   renderAlwaysTip() {
     const t = this;
     return (
-      <div className={`${t.props.prefixCls}-always-tip-container`} ref={(c) => { this.alwaysTip = c; }}>
+      <div
+        className={`${t.props.prefixCls}-always-tip-container`}
+        ref={(c) => { this.alwaysTip = c; }}
+      >
         {
           t.state.hover === 0
             ? t.props.placeholder
@@ -196,5 +201,7 @@ Rate.propTypes = {
 };
 
 Rate.displayName = 'uxcore-rate';
+
+polyfill(Rate);
 
 export default Rate;
