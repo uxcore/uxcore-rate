@@ -22,6 +22,16 @@ const makeNewArray = (len) => {
 };
 
 class Rate extends React.Component {
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.value !== prevState.hover) {
+      return {
+        hover: nextProps.value,
+      };
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
@@ -44,15 +54,6 @@ class Rate extends React.Component {
     if (prevProps.total !== this.props.total) {
       this.resizeAlwaysTip();
     }
-  }
-
-  getDerivedStateFromProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
-      return {
-        hover: nextProps.value,
-      };
-    }
-    return null;
   }
 
   resizeAlwaysTip() {

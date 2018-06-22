@@ -51,9 +51,13 @@ describe('Rate', () => {
   it('could active for mouse enter/leave', () => {
     instance = mount(<Rate />);
     Simulate.mouseEnter(instance.instance().star3);
-    expect(instance.state('hover')).to.equal(4);
-    Simulate.mouseLeave(ReactDOM.findDOMNode(instance.instance()));
-    expect(instance.state('hover')).to.equal(0);
+    setTimeout(() => {
+      expect(instance.state('hover')).to.equal(4);
+      Simulate.mouseLeave(ReactDOM.findDOMNode(instance.instance()));
+      setTimeout(() => {
+        expect(instance.state('hover')).to.equal(0);
+      }, 300);
+    }, 300);
   });
   it('disabled will active none', () => {
     instance = mount(<Rate disabled />);
