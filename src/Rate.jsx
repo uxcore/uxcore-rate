@@ -24,9 +24,10 @@ const makeNewArray = (len) => {
 class Rate extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.value !== prevState.hover) {
+    if (nextProps.value !== prevState.lastValue) {
       return {
         hover: nextProps.value,
+        lastValue: nextProps.value,
       };
     }
     return null;
@@ -37,6 +38,7 @@ class Rate extends React.Component {
 
     this.state = {
       hover: props.value,
+      lastValue: props.value,
     };
     this.handleItemLeave = this.handleItemLeave.bind(this);
   }
@@ -194,7 +196,7 @@ Rate.propTypes = {
   total: PropTypes.number,
   value: PropTypes.number.isRequired,
   scoreTips: PropTypes.arrayOf(PropTypes.string),
-  tipShow: PropTypes.oneOf(['hover', 'always', 'false']),
+  tipShow: PropTypes.oneOf(['hover', 'always', false]),
   onChange: PropTypes.func.isRequired,
   icons: PropTypes.array,
   activeAll: PropTypes.bool,
