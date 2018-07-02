@@ -20,7 +20,7 @@
 
 ## 0.3.1
 
-* `FIXED` wrong active color 
+* `FIXED` wrong active color
 
 ## 0.3.0
 
@@ -57,4 +57,4 @@
 * `CHANGED` modify default iconfont and color
 
 ## 0.1.0
-* first commit 
+* first commit

@@ -1,11 +1,10 @@
 import expect from 'expect.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils, { Simulate } from 'react-addons-test-utils';
-import Adapter from 'enzyme-adapter-react-15';
+import { Simulate } from 'react-dom/test-utils';
+import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount } from 'enzyme';
 import Rate from '../src';
-import sinon from 'sinon';
 import Icon from 'uxcore-icon';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -33,9 +32,9 @@ describe('Rate', () => {
   it('value afects hover', () => {
     instance = mount(<Rate total={10} />);
     instance.setProps({ value: 4 });
-    // setTimeout(() => {
-    expect(instance.state('hover')).to.equal(4);
-    // }, 300);
+    setTimeout(() => {
+      expect(instance.state('hover')).to.equal(4);
+    }, 300);
   });
   it('could mount with tipsAlways', () => {
     // const spy = sinon.spy(Rate.prototype, '');
@@ -52,9 +51,13 @@ describe('Rate', () => {
   it('could active for mouse enter/leave', () => {
     instance = mount(<Rate />);
     Simulate.mouseEnter(instance.instance().star3);
-    expect(instance.state('hover')).to.equal(4);
-    Simulate.mouseLeave(ReactDOM.findDOMNode(instance.instance()));
-    expect(instance.state('hover')).to.equal(0);
+    setTimeout(() => {
+      expect(instance.state('hover')).to.equal(4);
+      Simulate.mouseLeave(ReactDOM.findDOMNode(instance.instance()));
+      setTimeout(() => {
+        expect(instance.state('hover')).to.equal(0);
+      }, 300);
+    }, 300);
   });
   it('disabled will active none', () => {
     instance = mount(<Rate disabled />);

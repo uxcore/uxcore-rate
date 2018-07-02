@@ -11,6 +11,7 @@ import Tooltip from 'uxcore-tooltip';
 import Icon from 'uxcore-icon';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { polyfill } from 'react-lifecycles-compat';
 
 const makeNewArray = (len) => {
   const arr = [];
@@ -21,11 +22,23 @@ const makeNewArray = (len) => {
 };
 
 class Rate extends React.Component {
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.value !== prevState.lastValue) {
+      return {
+        hover: nextProps.value,
+        lastValue: nextProps.value,
+      };
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
     this.state = {
       hover: props.value,
+      lastValue: props.value,
     };
     this.handleItemLeave = this.handleItemLeave.bind(this);
   }
@@ -36,14 +49,6 @@ class Rate extends React.Component {
         // iconfont 会在 didMount 之后才加载进来，因此这里做了一个延时
         this.resizeAlwaysTip();
       }, 100);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
-      this.setState({
-        hover: nextProps.value,
-      });
     }
   }
 
@@ -92,7 +97,10 @@ class Rate extends React.Component {
   renderAlwaysTip() {
     const t = this;
     return (
-      <div className={`${t.props.prefixCls}-always-tip-container`} ref={(c) => { this.alwaysTip = c; }}>
+      <div
+        className={`${t.props.prefixCls}-always-tip-container`}
+        ref={(c) => { this.alwaysTip = c; }}
+      >
         {
           t.state.hover === 0
             ? t.props.placeholder
@@ -188,7 +196,7 @@ Rate.propTypes = {
   total: PropTypes.number,
   value: PropTypes.number.isRequired,
   scoreTips: PropTypes.arrayOf(PropTypes.string),
-  tipShow: PropTypes.string,
+  tipShow: PropTypes.oneOf(['hover', 'always', false]),
   onChange: PropTypes.func.isRequired,
   icons: PropTypes.array,
   activeAll: PropTypes.bool,
@@ -196,5 +204,7 @@ Rate.propTypes = {
 };
 
 Rate.displayName = 'uxcore-rate';
+
+polyfill(Rate);
 
 export default Rate;
