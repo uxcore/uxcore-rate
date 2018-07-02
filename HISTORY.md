@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.4.0
+
+* `CHANGED` fit React@16
+
 ## 0.3.5
 
 * `CHANGED` fit React@15
