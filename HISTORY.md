@@ -1,6 +1,10 @@
 # History
 ----
 
+## 0.4.1
+
+* `CHANGED` support js style export
+
 ## 0.4.0
 
 * `CHANGED` fit React@16
